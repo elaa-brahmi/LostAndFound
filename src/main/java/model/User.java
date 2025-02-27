@@ -24,6 +24,10 @@ public class User {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public User(String firstName, String email, String password, Role role, String phone) {
         this.name = firstName;
         this.email = email;
@@ -80,6 +84,18 @@ public class User {
 
     public String getPhone() {
         return phone;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                ", phone='" + phone + '\'' +
+                '}';
     }
 
     public void setPhone(String phone) {

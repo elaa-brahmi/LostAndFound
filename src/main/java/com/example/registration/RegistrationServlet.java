@@ -10,7 +10,6 @@ import model.Role;
 import model.User;
 import org.hibernate.Session;
 import services.UserDao;
-
 import java.sql.SQLException;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
@@ -21,7 +20,6 @@ public class RegistrationServlet extends HttpServlet {
     private final UserDao userDao=new UserDao();
     public RegistrationServlet() {
         System.out.println("Registration Servlet Initialized!");
-
     }
     private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$";
     private final UserDao userService = new UserDao();
@@ -62,27 +60,31 @@ public class RegistrationServlet extends HttpServlet {
             request.setAttribute("error",message.toString());
             request.getRequestDispatcher("login.jsp").forward(request, response);
             return;
-
         }
         //todo: check is the email is already there
         User user=new User(name,email,password, Role.USER,phone);
         try {
-            if(userDao.insertUser(user)){
+            if(userDao.registerUser(user)){
                 System.out.println("User registered successfully");
                 request.setAttribute("status","success");
+                session=request.getSession();
                 session.setAttribute("userId",user.getId());
-                session.setAttribute("username",user.getName());
+                session.setAttribute("name",user.getName());
+                session.setAttribute("email",user.getEmail());
                 session.setAttribute("role","user");
                 response.sendRedirect("index.jsp");
             }
             else{
+                System.out.println("User already exists with loginServlet");
                 request.setAttribute("status","fail");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+                return;
             }
         } catch (SQLException e) {
             request.setAttribute("status","fail");
             e.printStackTrace();
         }
-        request.getRequestDispatcher("login.jsp").forward(request, response);
+      //  request.getRequestDispatcher("login.jsp").forward(request, response);
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("doGet register is triggered");
