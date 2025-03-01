@@ -39,7 +39,6 @@ public class UserDao{
             System.out.println("Connected to the database");
             PreparedStatement ps=connection.prepareStatement("select * from users where email=?");
             ps.setString(1,email);
-
             ResultSet rs=ps.executeQuery();
             if(rs.next()){
                 String hashedPassword = rs.getString("password");

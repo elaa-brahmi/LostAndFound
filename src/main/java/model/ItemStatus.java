@@ -1,5 +1,5 @@
 package model;
 
 public enum ItemStatus {
-    PENDING,MATCHED;
+    PENDING,ACCEPTED,REJECTED;
 }

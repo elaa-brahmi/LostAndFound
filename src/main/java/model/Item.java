@@ -2,6 +2,7 @@ package model;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
@@ -19,8 +20,47 @@ public class Item {
     private ItemStatus status;
     @Enumerated(EnumType.STRING)
     private ItemType type;
+    private LocalDate datefound;
     private int UserId;
     public Item() {}
+    public Item(Integer id, String name, String description, String category, String location, String image, LocalDate date, ItemStatus itemStatus, Integer userid, ItemType itemType) {
+
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.category = category;
+        this.location = location;
+        this.image = image;
+        this.datefound = date;
+        this.status = itemStatus;
+        UserId = userid;
+        type = itemType;
+
+    }
+
+    public Item(String name, String description, String category, String location, String image,LocalDate datefound, ItemType type, int userId) {
+        this.name = name;
+        this.datefound = datefound;
+        this.description = description;
+        this.category = category;
+        this.location = location;
+        this.image = image;
+        this.type = type;
+        UserId = userId;
+    }
+
+    public Item(int id, String image, String location, String category, String description, String name, LocalDate datefound, int userId, ItemType type) {
+        this.id = id;
+        this.image = image;
+        this.location = location;
+        this.category = category;
+        this.description = description;
+        this.name = name;
+        this.datefound = datefound;
+        UserId = userId;
+        this.type = type;
+    }
+
     public Item(String name, String description, String category, String location, ItemStatus status, ItemType type, int userId) {
         this.name = name;
         this.description = description;
@@ -40,6 +80,19 @@ public class Item {
         this.status = status;
         this.type = type;
         UserId = userId;
+    }
+
+    public Item(Integer id, String name, String description, String category, String location, String image, LocalDate date, String status, Integer userid, ItemType itemType) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.category = category;
+        this.location = location;
+        this.image = image;
+        this.datefound = date;
+        UserId = userid;
+        this.type = itemType;
+
     }
 
     @Override
@@ -120,6 +173,22 @@ public class Item {
 
     public int getUserId() {
         return UserId;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", category='" + category + '\'' +
+                ", location='" + location + '\'' +
+                ", image='" + image + '\'' +
+                ", status=" + status +
+                ", type=" + type +
+                ", datefound=" + datefound +
+                ", UserId=" + UserId +
+                '}';
     }
 
     public void setUserId(int userId) {

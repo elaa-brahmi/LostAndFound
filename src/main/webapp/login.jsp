@@ -27,7 +27,7 @@
             <div class="text-center">
                 <a href="#" id="clearForm" >clear form</a>
             </div>
-            <button>create account</button>
+            <button class="loginbutton">create account</button>
         </form>
     </div>
     <div class="login">
@@ -38,7 +38,7 @@
             <div class="text-center">
                 <a href="forgotPassword.jsp" >Forgot password?</a>
             </div>
-            <button>Login</button>
+            <button class="loginbutton">Login</button>
         </form>
     </div>
 </div>

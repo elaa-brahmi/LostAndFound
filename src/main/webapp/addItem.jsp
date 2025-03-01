@@ -322,7 +322,7 @@
             <span class="background"></span>
         </div>
 
-<div class="container justify-content-center mt-2">
+<div class="container justify-content-center mt-2" style="display: flex;">
     <button class="submit">Submit</button></div></label>
 
 </form>

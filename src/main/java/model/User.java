@@ -28,6 +28,13 @@ public class User {
         this.id = id;
     }
 
+    public User(int id, String name, String email, String phone) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+    }
+
     public User(String firstName, String email, String password, Role role, String phone) {
         this.name = firstName;
         this.email = email;
