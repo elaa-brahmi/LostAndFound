@@ -412,7 +412,7 @@
   <body class="vh-100" style="overflow-x: hidden;  padding:0;">
   <div class="nav">
     <div class="container">
-      <a href="#" class="btn">Home</a>
+      <a href="index.jsp" class="btn">Home</a>
       <a href="MyPosts.jsp" class="btn">profile</a>
       <a href="addItem.jsp" class="btn" >report lost/found item </a>
       <a href="about.jsp" class="btn">about</a>
@@ -477,7 +477,6 @@
   </div>
   <script>
     let currentPage = 1;
-
     $(document).ready(function() {
       fetchItems(currentPage);
     });
@@ -490,7 +489,6 @@
           pageSize: 6
         },
         dataType: 'json',
-
        success: function(data) {
         console.log(data);
         renderItems(data.itemsServlets);
@@ -516,20 +514,7 @@
               <div>
 
       <p><strong>`+item.type+`</strong></p>
-
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
               </div>
               </div>
               <div class="light-button" style="display: flex;justify-content: center;">
@@ -538,18 +523,15 @@
       <div class="dot"></div>
       <div class="light"></div>
     </div>
-    <div class="button-holder">
-
-      <p>view viewer infos</p>
+    <div class="button-holder" onclick="viewPoster(item.userid)">
+      <p>view poster infos</p>
     </div>
   </button>
 </div>
-
 </div>
           `;
         cardItems.appendChild(cardItem);
            });
-
     }
     function renderPagination(currentPage,totalPages){
       var pagination = document.getElementById("pagination");

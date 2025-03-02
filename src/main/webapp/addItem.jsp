@@ -193,7 +193,6 @@
                 opacity: 0;
             }
         }
-
         .filter-switch {
             border: 2px solid #ffc000;
             border-radius: 30px;
@@ -245,18 +244,126 @@
         #option2:not(:checked) + label[for="option2"] {
             color: #7d7d7d;
         }
-        @media (max-width: 576px) { /* Adjust for small screens */
+        /*@media (!*max-width: 576px*!) { !* Adjust for small screens *!
             .form {
-                max-width: 90vw; /* Makes form fit smaller screens */
+                !*max-width: 90vw;*! !* Makes form fit smaller screens *!
                 padding: 15px;
             }
+        }*/
+
+
+
+        .outline {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .rect {
+            stroke-dashoffset: 5;
+            stroke-dasharray: 0 0 10 40 10 40;
+            transition: 0.5s;
+            stroke: #fff;
+        }
+
+        .nav {
+            margin-top:1%;
+            position: relative;
+            height: 60px;
+        }
+
+        .container:hover .outline .rect {
+            transition: 999999s;
+            stroke-dashoffset: 1;
+            stroke-dasharray: 0;
+        }
+
+        .container {
+            width: 99%;
+            max-width:99%;
+            position: absolute;
+            inset: 0;
+            background: grey;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0.5em;
+        }
+
+        .btn {
+            padding: 0.5em 1.5em;
+            color: #fff;
+            font-size: 2em;
+            text-decoration: none;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+
+        .btn:hover {
+            background: #fff3;
+            color: #fff;
+        }
+
+        .btn:nth-child(1):hover ~ svg .rect {
+            stroke-dashoffset: 0;
+            stroke-dasharray: 0 2 8 73.3 8 10.7;
+        }
+
+        .btn:nth-child(2):hover ~ svg .rect {
+            stroke-dashoffset: 0;
+            stroke-dasharray: 0 12.6 9.5 49.3 9.5 31.6;
+        }
+
+        .btn:nth-child(3):hover ~ svg .rect {
+            stroke-dashoffset: 0;
+            stroke-dasharray: 0 24.5 8.5 27.5 8.5 55.5;
+        }
+
+        .btn:nth-child(4):hover ~ svg .rect {
+            stroke-dashoffset: 0;
+            stroke-dasharray: 0 34.7 6.9 10.2 6.9 76;
+        }
+
+        .btn:hover ~ .outline .rect {
+            stroke-dashoffset: 0;
+            stroke-dasharray: 0 0 10 40 10 40;
+            transition: 0.5s !important;
         }
 
 
 
     </style>
 </head>
-<body class="d-flex justify-content-center align-items-center vh-100"><!--Viewport Height-->
+<body class="vh-100" style="overflow-x: hidden;padding:0;"><!--Viewport Height-->
+
+<div class="nav">
+    <div class="container">
+        <a href="index.jsp" class="btn">Home</a>
+        <a href="MyPosts.jsp" class="btn">profile</a>
+        <a href="addItem.jsp" class="btn" >report lost/found item </a>
+        <a href="about.jsp" class="btn">about</a>
+        <svg
+                class="outline"
+                overflow="visible"
+                width="100%"
+                height="60"
+                viewBox="0 0 100% 60"
+                xmlns="http://www.w3.org/2000/svg"
+        >
+            <rect
+                    class="rect"
+                    pathLength="100"
+                    x="0"
+                    y="0"
+                    width="100%"
+                    height="60"
+                    fill="transparent"
+                    stroke-width="5"
+            ></rect>
+        </svg>
+    </div>
+</div>
 <!-- From Uiverse.io by Yaya12085 -->
 <form class="form mx-auto" action="addItem" method="post">
     <p class="title text-center">add item </p>
@@ -274,9 +381,7 @@
 
     <label>
 
-
         <label>
-
         <select style="border-radius:1px solid gray;" class="input" id="category" name="category" required >
             <option value="Electronics">Electronics</option>
             <option value="Personal Accessories">Personal Accessories</option>
@@ -287,14 +392,9 @@
             <option value="Household & Miscellaneous Items">Household & Miscellaneous Items</option></select>
 
         </label>
-
-
-
-
     </label>
-
     <label>
-        <input required="" placeholder="" name="location" type="text" class="input" required="">
+        <input placeholder="" name="location" type="text" class="input" required="">
         <span>location</span>
     </label>
     <label>
@@ -322,7 +422,7 @@
             <span class="background"></span>
         </div>
 
-<div class="container justify-content-center mt-2" style="display: flex;">
+<div class=" justify-content-center mt-2" style="display: flex;">
     <button class="submit">Submit</button></div></label>
 
 </form>

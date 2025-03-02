@@ -48,7 +48,9 @@ public class AddItem extends HttpServlet {
             ps.setInt(9,userId);
             int rows=ps.executeUpdate();
             if(rows>0){
+
                 System.out.println("item added");
+                getServletContext().getRequestDispatcher("/MyPosts.jsp").forward(request,response);
             }
 
 
