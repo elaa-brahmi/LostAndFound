@@ -95,6 +95,22 @@ public class Item {
 
     }
 
+    public Item(Integer itemId, String itemName, String itemDescription, String itemCategory, String itemLocation,LocalDate date , ItemType itemType, ItemStatus itemStatus, String itemDate, String itemImage, Integer itemUserId) {
+        this.id = itemId;
+        this.name = itemName;
+        this.description = itemDescription;
+        this.category = itemCategory;
+        this.location = itemLocation;
+        this.datefound = date;
+        this.UserId = itemUserId;
+        this.type = itemType;
+        this.status = itemStatus;
+        this.image = itemImage;
+
+
+
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
@@ -173,6 +189,14 @@ public class Item {
 
     public int getUserId() {
         return UserId;
+    }
+
+    public LocalDate getDatefound() {
+        return datefound;
+    }
+
+    public void setDatefound(LocalDate datefound) {
+        this.datefound = datefound;
     }
 
     @Override

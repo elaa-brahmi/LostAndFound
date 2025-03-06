@@ -365,11 +365,11 @@
     </div>
 </div>
 <!-- From Uiverse.io by Yaya12085 -->
-<form class="form mx-auto" action="addItem" method="post" enctype="multipart/form-data">
-    <p class="title text-center">add item </p>
+<form class="form mx-auto" action="ItemByIdItem" method="post">
+    <p class="title text-center">edit item </p>
     <div class="flex">
         <label>
-            <input required="" placeholder="" type="text" name="name" class="input">
+            <input required="" placeholder="" type="text" name="name" class="input" value="<%= request.getAttribute("item")%>">
             <span>name</span>
         </label>
 
@@ -382,14 +382,14 @@
     <label>
 
         <label>
-        <select style="border-radius:1px solid gray;" class="input" id="category" name="category" required >
-            <option value="Electronics">Electronics</option>
-            <option value="Personal Accessories">Personal Accessories</option>
-            <option value="Identification & Documents">Identification & Documents</option>
-            <option value="Clothing & Wearables">Clothing & Wearables</option>
-            <option value="Keys & Security Items">Keys & Security Items</option>
-            <option value="Travel & Transport Items">Travel & Transport Items</option>
-            <option value="Household & Miscellaneous Items">Household & Miscellaneous Items</option></select>
+            <select style="border-radius:1px solid gray;" class="input" id="category" name="category" required >
+                <option value="Electronics">Electronics</option>
+                <option value="Personal Accessories">Personal Accessories</option>
+                <option value="Identification & Documents">Identification & Documents</option>
+                <option value="Clothing & Wearables">Clothing & Wearables</option>
+                <option value="Keys & Security Items">Keys & Security Items</option>
+                <option value="Travel & Transport Items">Travel & Transport Items</option>
+                <option value="Household & Miscellaneous Items">Household & Miscellaneous Items</option></select>
 
         </label>
     </label>
@@ -410,7 +410,7 @@
         </label><br>
         <label>
 
-        <input name="date" id="data" type="date" class="infos input" required="" style="width:300px;">
+            <input name="date" id="data" type="date" class="infos input" required="" style="width:300px;">
 
         </label>
 
@@ -422,8 +422,8 @@
             <span class="background"></span>
         </div>
 
-<div class=" justify-content-center mt-2" style="display: flex;">
-    <button class="submit">Submit</button></div></label>
+        <div class=" justify-content-center mt-2" style="display: flex;">
+            <button class="submit">Submit</button></div></label>
 
 </form>
 </body>

@@ -92,6 +92,36 @@ public class UserDao{
         return true;
     }
 
+    public void updateUser(User user) throws SQLException{
+        try{
+            connection = BDConnection.getConnection();
+            PreparedStatement ps= connection.prepareStatement("update users set name=?,email=?,password=?,role=?,phone=? where id=?");
+            ps.setString(1,user.getName());
+            ps.setString(2,user.getEmail());
+            String password=user.getPassword();
+            String hashedPassword=PasswordUtil.hashPassword(password);
+            ps.setString(3,hashedPassword);
+            ps.setString(4, String.valueOf(Role.USER));
+            ps.setString(5,user.getPhone());
+            ps.setInt(6,user.getId());
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+    public void deleteUser(int id) throws SQLException{
+        try{
+            connection = BDConnection.getConnection();
+            PreparedStatement ps=connection.prepareStatement("delete from users where id=?");
+            ps.setInt(1,id);
+            ps.executeUpdate();
+
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+
 
 
 

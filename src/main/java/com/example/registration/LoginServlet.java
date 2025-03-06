@@ -29,7 +29,7 @@ public class LoginServlet extends HttpServlet {
                 request.getRequestDispatcher("login.jsp").forward(request,response);
             }
             else{
-                System.out.println("user logged in in loginServlet");
+               // System.out.println("user logged in in loginServlet");
                 Optional<User> user=UserDao.authenticate(email,password);
                 session=request.getSession();
                 System.out.println(user.toString());
@@ -37,12 +37,12 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("email",email);
                 session.setAttribute("name",user.get().getName());
                 if(user.get().getRole().toString().equals("ADMIN")) {
-                    System.out.println("admin logged in in loginServlet");
+                   // System.out.println("admin logged in in loginServlet");
                     session.setAttribute("role", user.get().getRole().toString().toLowerCase());
                     response.sendRedirect("adminDashboard.jsp");
                 }
                 else{
-                        System.out.println("user logged in in loginServlet");
+                        //System.out.println("user logged in in loginServlet");
                         session.setAttribute("role",user.get().getRole().toString().toLowerCase());
                         response.sendRedirect("index.jsp");
                     }
@@ -53,6 +53,6 @@ public class LoginServlet extends HttpServlet {
         }
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("doGet login is triggered");
+       // System.out.println("doGet login is triggered");
     }
 }

@@ -474,6 +474,8 @@
         </button>
       </div>
     </div>
+<%--    <img src="uploads/black-wallet.jpeg" alt="Lost Item">--%>
+
   </div>
   <script>
     let currentPage = 1;
@@ -502,36 +504,35 @@
       var cardItems=document.getElementById("cardItems");
       cardItems.innerHTML="";
       items.forEach(function(item) {
-        var cardItem=document.createElement("div");
+        var cardItem = document.createElement("div");
         cardItem.classList.add("card");
-        cardItem.innerHTML=`
-              <div class="card-img">`+item.image+`</div>
-              <div class="card-info">
-              <p class="text-title">`+item.category+ `<br>`+item.name+`</p>
-              <p class="text-body">`+item.description+`
 
-             </p><p>`+item.datefound+`<br>`+item.location+`</p>
-              <div>
+        cardItem.innerHTML = `
+        <div class="card-img">
+           <img src="http://localhost:8080/${item.image}" alt="Uploaded Image">
 
-      <p><strong>`+item.type+`</strong></p>
-</div>
-              </div>
-              </div>
-              <div class="light-button" style="display: flex;justify-content: center;">
-  <button class="bt">
-    <div class="light-holder">
-      <div class="dot"></div>
-      <div class="light"></div>
-    </div>
-    <div class="button-holder" onclick="viewPoster(item.userid)">
-      <p>view poster infos</p>
-    </div>
-  </button>
-</div>
-</div>
-          `;
-        cardItems.appendChild(cardItem);
-           });
+        </div>
+        <div class="card-info">
+            <p class="text-title">${item.category} <br> ${item.name}</p>
+            <p class="text-body">${item.description}</p>
+            <p>${item.datefound} <br> ${item.location}</p>
+            <p><strong>${item.type}</strong></p>
+        </div>
+        <div class="light-button" style="display: flex; justify-content: center;">
+            <button class="bt" onclick="viewPoster(${item.userid})">
+                <div class="light-holder">
+                    <div class="dot"></div>
+                    <div class="light"></div>
+                </div>
+                <div class="button-holder">
+                    <p>View Poster Infos</p>
+                </div>
+            </button>
+        </div>
+    `;
+        cardItems.appendChild(cardItem); // Make sure 'cardItems' is defined in your HTML
+      });
+
     }
     function renderPagination(currentPage,totalPages){
       var pagination = document.getElementById("pagination");

@@ -621,7 +621,7 @@
 
     function editItem(itemId){
         $.ajax({
-            url: 'http://localhost:8080/EditItems',
+            url: 'http://localhost:8080/ItemById',
             type: 'GET',
             data: {
                 itemId:itemId,
